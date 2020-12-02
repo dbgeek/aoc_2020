@@ -11,4 +11,11 @@ function getInputArrayNumber(day: number, part: number): Array<number> {
     .map((v) => +v);
 }
 
-export { getInput, getInputArrayNumber };
+function getInputArrayString(day: number, part: number): Array<string> {
+  return getInput(day, part)
+    .toString()
+    .split('\n')
+    .map((v) => v);
+}
+
+export { getInput, getInputArrayString, getInputArrayNumber };
