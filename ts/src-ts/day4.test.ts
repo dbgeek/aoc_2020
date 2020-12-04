@@ -66,5 +66,10 @@ describe('testing passport class', () => {
         passportPolicy,
       ),
     ).toBeFalsy();
+    expect(
+      new Passport(['hcl:dab227 iyr:2012', 'ecl:brn hgt:182cm pid:021572410 eyr:2020 byr:1992 cid:277']).valid(
+        passportPolicy,
+      ),
+    ).toBeFalsy();
   });
 });
