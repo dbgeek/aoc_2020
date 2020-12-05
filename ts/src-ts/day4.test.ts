@@ -71,5 +71,10 @@ describe('testing passport class', () => {
         passportPolicy,
       ),
     ).toBeFalsy();
+    expect(new Passport([]).valid(passportPolicy)).toBeFalsy();
   });
+});
+
+test('day4 part 2', () => {
+  expect(day4Part2(parseBatchFile(getInputArrayString(4, 1)))).toEqual(160);
 });

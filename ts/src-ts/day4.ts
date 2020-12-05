@@ -82,7 +82,9 @@ class Passport {
             break;
           case 'hgt':
             this.hgtType = fieldValue.slice(-2);
-            this.hgt = +fieldValue.substr(0, fieldValue.length - 2);
+            if (this.hgtType === 'cm' || this.hgtType === 'in') {
+              this.hgt = +fieldValue.substr(0, fieldValue.length - 2);
+            }
             break;
           case 'hcl':
             this.hcl = fieldValue;
@@ -102,7 +104,7 @@ class Passport {
   }
   valid(policy: Policy): boolean {
     const byrValid = policy.byr.min <= this.byr && this.byr <= policy.byr.max;
-    const iyrValid = policy.iyr.min <= this.iyr && this.byr <= policy.iyr.max;
+    const iyrValid = policy.iyr.min <= this.iyr && this.iyr <= policy.iyr.max;
     const eyrValid = policy.eyr.min <= this.eyr && this.eyr <= policy.eyr.max;
 
     const hgtValid =
@@ -167,7 +169,9 @@ function day4Part2(passports: string[][]): number {
   const validPassports: Passport[] = [];
   passports.forEach((v) => {
     const passport = new Passport(v);
-    if (passport.valid(passportPolicy)) validPassports.push(passport);
+    if (passport.valid(passportPolicy)) {
+      validPassports.push(passport);
+    }
   });
   return validPassports.length;
 }
