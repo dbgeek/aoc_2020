@@ -4,6 +4,10 @@ function getInput(day: number, part: number): Buffer {
   return readFileSync(`./data/${day}_${part}`);
 }
 
+function getInputString(day: number, part: number): string {
+  return getInput(day, part).toString();
+}
+
 function getInputArrayNumber(day: number, part: number): Array<number> {
   return getInput(day, part)
     .toString()
@@ -33,4 +37,4 @@ function getInputNestedArrayString(day: number, part: number): string[][] {
   return groups;
 }
 
-export { getInput, getInputArrayString, getInputArrayNumber, getInputNestedArrayString };
+export { getInput, getInputArrayString, getInputArrayNumber, getInputNestedArrayString, getInputString };
